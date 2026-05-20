@@ -91,35 +91,35 @@ if page == "Prediction":
 
     input_df = create_features(input_df)
 
-if st.button("Predict Churn"):
+    if st.button("Predict Churn"):
 
-    raw_pred = model.predict(input_df)[0]
+        raw_pred = model.predict(input_df)[0]
 
-    probability = model.predict_proba(input_df)[0][1]
+        probability = model.predict_proba(input_df)[0][1]
 
-    st.subheader("Result")
+        st.subheader("Result")
 
-    # FIX: normalize prediction properly
-    if hasattr(model, "label_encoder"):
-        prediction = model.label_encoder.inverse_transform([raw_pred])[0]
-    else:
-        prediction = raw_pred
+        # FIX: normalize prediction properly
+        if hasattr(model, "label_encoder"):
+            prediction = model.label_encoder.inverse_transform([raw_pred])[0]
+        else:
+            prediction = raw_pred
 
-    # SAFE CHECK (handles both encoded + raw models)
-    is_churn = (
-        (prediction == 1) or
-        (str(prediction).lower() in ["yes", "true", "churn"])
-    )
+        # SAFE CHECK (handles both encoded + raw models)
+        is_churn = (
+            (prediction == 1) or
+            (str(prediction).lower() in ["yes", "true", "churn"])
+        )
 
-    if is_churn:
-        st.error(f"⚠ Customer likely to CHURN ({probability:.2%})")
-        st.write(f"Risk Score: {probability:.2f}")
+        if is_churn:
+            st.error(f"⚠ Customer likely to CHURN ({probability:.2%})")
+            st.write(f"Risk Score: {probability:.2f}")
 
-    else:
-        st.success(f"✅ Customer likely to STAY ({(1 - probability):.2%})")
-        st.write(f"Retention Confidence: {(1 - probability):.2f}")
+        else:
+            st.success(f"✅ Customer likely to STAY ({(1 - probability):.2%})")
+            st.write(f"Retention Confidence: {(1 - probability):.2f}")
 
-    st.progress(float(1-probability))
+        st.progress(float(1-probability))
 
 # -----------------------------
 # SHAP EXPLAINABILITY PAGE
