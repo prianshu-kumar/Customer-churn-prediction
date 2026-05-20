@@ -1,5 +1,7 @@
 # 📉 Customer Churn Prediction System (End-to-End ML Project)
 
+[![Streamlit App](https://img.shields.io/badge/Streamlit-Live_App-red?logo=streamlit)](https://customer-churn-prediction-prianshu.streamlit.app/)
+
 An **industry-grade machine learning system** that predicts customer churn using advanced ML pipelines, hyperparameter tuning, and model explainability (SHAP). The project is designed with a **production-style architecture**, including modular code, reusable pipelines, and a deployed Streamlit dashboard.
 
 ---
