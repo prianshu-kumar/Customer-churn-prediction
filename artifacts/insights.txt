@@ -1,0 +1,8 @@
+Top churn drivers:
+1. Monthly Charges
+2. Contract Type
+3. Tenure
+4. Payment Method
+
+Insight:
+Customers with short tenure + high charges are high churn risk.
